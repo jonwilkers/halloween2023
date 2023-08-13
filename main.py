@@ -36,12 +36,12 @@ if __name__ == '__main__':
         new_file = os.path.join(f.dest_path, f.dest_filename + ext)
         os.rename(out_file, new_file)
 
-        mp4 = os.path.join(f.dest_path, f"{f.dest_filename}.{YT_FORMAT}")
+        old_format = os.path.join(f.dest_path, f"{f.dest_filename}.{YT_FORMAT}")
         new_format = os.path.join(f.dest_path, f"{f.dest_filename}.{f.dest_format}")
 
-        sound = pydub.AudioSegment.from_file(mp4, format=YT_FORMAT)
+        sound = pydub.AudioSegment.from_file(old_format, format=YT_FORMAT)
         sound.export(new_format, format=f.dest_format)
 
-        os.unlink(mp4)
+        os.unlink(old_format)
 
         print('hello world')
